@@ -29,11 +29,13 @@ export default function About() {
           >
             <div className="space-y-4 text-neutral-400 leading-relaxed">
               <p>
-                Estudiante avanzado de Ingeniería en Sistemas (UTN.BA) y Diplomado en Python para IA (UTN.BA) especializado en AI Engineering.
+                Estudiante avanzado de Ingeniería en Sistemas (UTN.BA) y Diplomado en Python para IA (UTN.BA).
               </p>
 
               <p>
-              Actualmente me dedico a la creación de agentes inteligentes y workflows automatizados quereemplazan operaciones manuales, ahorrando tiempo y reduciendo errores en el día a día de profesionales y equipos.              </p>
+              Actualmente me dedico a la creación de agentes inteligentes y workflows automatizados que
+              reemplazan operaciones manuales, ahorrando tiempo y reduciendo errores en el día a día de profesionales y equipos.              
+              </p>
               <p>
                 Me apasiona hacer visible el impacto de la IA: trabajo junto a empresas y negocios
                 para entender sus necesidades, diseñar soluciones adoptables y demostrar con datos
