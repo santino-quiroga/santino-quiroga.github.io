@@ -29,7 +29,7 @@ export default function About() {
           >
             <div className="space-y-4 text-neutral-400 leading-relaxed">
               <p>
-                Estudiante avanzado de Ingeniería en Sistemas (UTN.BA) y Diplomado en Python para IA (UTN.BA).
+                Estudiante avanzado de Ingeniería en Sistemas (UTN.BA) y Diplomado en Python para IA (UTN.FRD).
               </p>
 
               <p>
