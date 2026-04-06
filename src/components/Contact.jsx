@@ -90,7 +90,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 className="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-accent/50 transition-colors resize-none"
-                placeholder="Contame sobre tu proyecto..."
+                placeholder="Mensaje..."
               />
             </div>
             <button
@@ -110,8 +110,9 @@ export default function Contact() {
             className="flex flex-col justify-center space-y-6"
           >
             <p className="text-neutral-400 leading-relaxed">
-              ¿Tenés un proyecto en mente o querés automatizar algo con IA?
-              Escribime y charlamos. También estoy abierto a propuestas laborales.
+              Si queres contactarte conmigo podes hacerlo a traves de mis redes sociales
+              o llenando el formulario.
+
             </p>
 
             <div className="space-y-4">
@@ -150,7 +151,6 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* PLACEHOLDER: Agregar badge de LinkedIn embebido aquí */}
           </motion.div>
         </div>
       </div>
