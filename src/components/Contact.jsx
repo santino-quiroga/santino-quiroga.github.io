@@ -13,17 +13,40 @@ const LINKEDIN_URL = 'https://linkedin.com/in/santino-quiroga'
 const GITHUB_URL = 'https://github.com/santino-quiroga'
 
 export default function Contact() {
+  const FORMSPREE_ID = 'xojyqrzk' // ← Reemplazá con tu Form ID de Formspree
+
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // PLACEHOLDER: Conectar con servicio de email (Formspree, EmailJS, etc.)
-    setSent(true)
-    setTimeout(() => setSent(false), 3000)
-    setForm({ name: '', email: '', message: '' })
+    setLoading(true)
+    setError(null)
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (res.ok) {
+        setSent(true)
+        setForm({ name: '', email: '', message: '' })
+        setTimeout(() => setSent(false), 4000)
+      } else {
+        const data = await res.json()
+        setError(data?.errors?.[0]?.message ?? 'Error al enviar. Intentá de nuevo.')
+      }
+    } catch {
+      setError('Error de red. Revisá tu conexión.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -93,12 +116,16 @@ export default function Contact() {
                 placeholder="Mensaje..."
               />
             </div>
+            {error && (
+              <p className="text-sm text-red-400">{error}</p>
+            )}
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-light text-white font-medium rounded-lg transition-colors duration-200"
+              disabled={loading}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-light text-white font-medium rounded-lg transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <FiSend size={16} />
-              {sent ? '¡Enviado!' : 'Enviar'}
+              {loading ? 'Enviando…' : sent ? '¡Enviado!' : 'Enviar'}
             </button>
           </motion.form>
 
